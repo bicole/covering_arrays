@@ -1,0 +1,94 @@
+<!-- views/searchArrays.ejs -->
+<!doctype html>
+<html>
+<head>
+    <% include includes/head.ejs %>
+    <!-- Custom styles for this template -->
+    <link href="/resources/css/dashboard.css" rel="stylesheet">
+
+
+    <!-- socket.io import --> 
+    <% include includes/socketio.ejs %>
+
+    <script src="/resources/js/socketOps.js"></script>
+
+</head>
+<body>
+    <% include includes/navBar.ejs %>
+    <div class="container-fluid">
+      <div class="row">
+        <% include includes/sideBar.ejs %>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Find An Array</h1>
+            <form class="form-inline" onsubmit="return lookUpArray(event, 
+                document.getElementById('inputArrayNumber').value,
+                document.getElementById('inputRowsNumber').value,
+                document.getElementById('inputStrength').value,
+                document.getElementById('inputColumnsNumber').value,
+                document.getElementById('inputSymbolsNumber').value,
+                document.getElementById('inputStatus').value,
+                document.getElementById('inputTags').value
+                )">
+
+                <div class="form-group">
+                    <label class="sr-only" for="inputArrayNumber">ArrayNumber</label>
+                    <input type="text" class="form-control" id="inputArrayNumber" placeholder="Array Id">
+                </div>    
+                <div class="form-group">
+                    <label class="sr-only" for="inputRowsNumber">RowsNumber</label>
+                    <input type="text" class="form-control" id="inputRowsNumber" placeholder="Number of rows">
+                </div>     
+                <div class="form-group">
+                    <label class="sr-only" for="inputStrength">Strength</label>
+                    <input type="text" class="form-control" id="inputStrength" placeholder="Strength">
+                </div>     
+                <div class="form-group">
+                    <label class="sr-only" for="inputColumnsNumber">ColumnsNumber</label>
+                    <input type="text" class="form-control" id="inputColumnsNumber" placeholder="Number of columns">
+                </div>  
+                <div class="form-group">
+                    <label class="sr-only" for="inputSymbolsNumber">SymbolsNumber</label>
+                    <input type="text" class="form-control" id="inputSymbolsNumber" placeholder="Number of symbols">
+                </div>  
+                <div class="form-group">
+                    <select class="custom-select" id="inputStatus">
+                        <option selected value="">Status</option>
+                        <option value=''></option>
+                        <option value="not verified">not verified</option>
+                        <option value="verified">verified</option>   
+                        <option value="superseded">superseded</option>                    
+                    </select>
+                </div>    
+                <div class="form-group">
+                    <label class="sr-only" for="inputTags">Tags</label>
+                    <input type="text" class="form-control" id="inputTags" placeholder="Tags">
+                </div>   
+                <button type="submit" class="btn btn-primary">Find Array</button>
+                <div hidden class="alert alert-danger" role="alert" id="badArrayNumber">No arrays found for that search string, check your syntax if you were expecting to find an array.</div>
+            </form>
+
+            <table class="table" id="foundArrayTable">
+                <thead>
+                    <tr>
+                        <th>Array ID Number</th>
+                        <th>Number of rows</th>
+                        <th>Strength</th>
+                        <th>Number of columns</th>
+                        <th>Number of symbols</th>
+                        <th>Status</th>
+                        <th>Tags</th>
+                        <th>view</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                <!-- leaving tbody empty for now-->                    
+                </tbody>
+            </table>           
+        </div>
+      </div>
+    </div>
+
+    <% include includes/bootstrapCoreInclude.ejs %>
+    
+</body>
+</html>

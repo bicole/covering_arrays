@@ -1,0 +1,84 @@
+<!-- views/addArray.ejs -->
+<!doctype html>
+<html>
+<head>
+    <% include includes/head.ejs %>
+    <!-- Custom styles for this template -->
+    <link href="/resources/css/dashboard.css" rel="stylesheet">
+
+    <!-- socket.io session name-->    
+    <script>
+        window.userId = "<%= req.user.username %>";
+        window.apiKey = "<%= req.user.apiKey %>";
+    </script>
+
+    <!-- socket.io import --> 
+    <% include includes/socketio.ejs %>
+
+    <script src="/resources/js/socketOps.js"></script>
+    
+</head>
+<body>
+    <% include includes/navBar.ejs %>
+    <div class="container-fluid">
+      <div class="row">
+        <% include includes/sideBar.ejs %>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Add An Array</h1>
+            <div hidden class="alert alert-success" role="alert" id="arrayCreated">Array created, click here to view.</div>
+            <div hidden class="alert alert-danger" role="alert" id="arrayUploadFailed"></div>
+            <form  onsubmit="return addArrayToDatabase(event, 
+                document.getElementById('inputNumRows').value,
+                document.getElementById('inputStrength').value,
+                document.getElementById('inputNumColumns').value,
+                document.getElementById('inputNumSymbols').value,
+                document.getElementById('inputTextDescription').value,
+                document.getElementById('inputTags').value
+                )">
+                <div class="form-group">
+                    <label class="sr-only" for="inputNumRows">numRows</label>
+                    <input type="text" class="form-control" id="inputNumRows" placeholder="Enter the number of rows">
+                </div> 
+                <div class="form-group">
+                    <label class="sr-only" for="inputStrength">strength</label>
+                    <input type="text" class="form-control" id="inputStrength" placeholder="Enter the strength">
+                </div> 
+                <div class="form-group">
+                    <label class="sr-only" for="inputNumColumns">numColumns</label>
+                    <input type="text" class="form-control" id="inputNumColumns" placeholder="Enter the number of columns">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="inputNumSymbols">numSymbols</label>
+                    <input type="text" class="form-control" id="inputNumSymbols" placeholder="Enter the number of symbols">
+                </div> 
+                <div class="form-group">
+                    <label class="sr-only" for="inputTags">tags</label>
+                    <input type="text" class="form-control" id="inputTags" placeholder="Enter comma seperated tags">
+                </div> 
+                <div class="form-group">
+                    <textarea id="inputTextDescription" rows="4" cols="50"  placeholder="Enter a description."></textarea>                    
+                </div> 
+                      
+                <input type="file" id="file-input">
+                <p id="status">Please select a file</p>
+                         
+                <button type="submit" class="btn btn-primary">Add Array</button>  
+                               
+            </form>
+
+
+            <div display: hidden>url:</div>
+            <input type="text" id="upload-url" display: hidden>          
+            
+                      
+        </div>
+      </div>
+    </div>
+
+    <% include includes/bootstrapCoreInclude.ejs %>
+
+    <!-- import our file upload listener -->
+    <script src="/resources/js/fileUploads.js"></script>
+    
+</body>
+</html>

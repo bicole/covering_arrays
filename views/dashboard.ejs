@@ -1,0 +1,68 @@
+<!-- views/dashboard.ejs -->
+<!doctype html>
+<html>
+<head> 
+    <% include includes/head.ejs %>
+    <!-- Custom styles for this template -->
+    <link href="/resources/css/dashboard.css" rel="stylesheet">
+
+    <link href="/resources/css/accountLinkModal.css" rel="stylesheet">
+    
+    <!-- socket.io session name-->    
+    <script>
+        window.userId = "<%= req.user.username %>";
+        window.apiKey = "<%= req.user.apiKey %>";
+    </script>
+    <!-- socket.io import --> 
+    <script src="/resources/js/socket.io.js"></script> 
+    <script src="/resources/js/socketOps.js"></script>  
+    
+    <!--submitted Arrays lookup-->
+    <script>
+        window.onload = getUsersArrays("<%= req.user.apiKey %>");
+    </script>  
+
+</head>
+<body>
+   <% include includes/navBar.ejs %>
+    <div class="container-fluid">
+      <div class="row">
+        <% include includes/sideBar.ejs %>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Dashboard</h1>
+	         <div class="row">		     
+		         <div class="col-sm-6">
+			        <div class="well">
+				       <h3><span class="fa fa-user"></span> Local</h3>
+					       <% include includes/accountInfo.ejs %> 
+			        </div>
+		         </div>
+                 <div class="col-sm-6">
+			        <div class="well">
+				       <h3><span class="fa fa-user"></span> Submitted Arrays</h3>
+					       <table class="table" id="usersArraysTable">
+                                <thead>
+                                    <tr>
+                                        <th>Array Number</th>
+                                        <th>CA(t,k,v)</th>
+                                        <th>Page</th> 
+                                    </tr>
+                                </thead>
+                            <tbody>
+                            <!-- leaving tbody empty for now-->                    
+                            </tbody>
+                        </table>
+			        </div>
+		         </div>
+	        </div>
+           </div>
+        </div>
+      </div>
+    </div>
+
+    <% include includes/bootstrapCoreInclude.ejs %>
+    <!-- for side bar updating -->
+    <script src="/resources/js/sideBar.js"></script>
+    
+</body>
+</html>

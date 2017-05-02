@@ -1,0 +1,48 @@
+<!-- views/Users.ejs -->
+<!doctype html>
+<html>
+<head>
+    <% include includes/head.ejs %>
+    <!-- Custom styles for this template -->
+    <link href="/resources/css/dashboard.css" rel="stylesheet">
+
+
+    <!-- socket.io import --> 
+    <% include includes/socketio.ejs %>
+
+    <script src="/resources/js/socketOps.js"></script>
+    
+    <script>
+        window.onload = lookUpUserInfo("<%= queryString.userName %>");
+    </script>
+
+</head>
+<body>
+    <% include includes/navBar.ejs %>
+    <div class="container-fluid">
+      <div class="row">
+        <% include includes/sideBar.ejs %>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">User Info</h1>
+            <div hidden class="alert alert-danger" role="alert" id="badUser">This user does not exist.</div>
+
+            <table class="table" id="userPropertiesTable" style="max-width: fit-content">
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Value</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                                      
+                </tbody>
+            </table>
+            <textarea id="textDescription" rows="4" cols="50" disabled="disabled">No description found.</textarea>                       
+        </div>
+      </div>
+    </div>
+
+    <% include includes/bootstrapCoreInclude.ejs %>
+    
+</body>
+</html>

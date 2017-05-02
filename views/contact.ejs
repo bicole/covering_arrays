@@ -1,0 +1,80 @@
+<!-- views/contact.ejs -->
+<!doctype html>
+<html>
+<head>
+    <% include includes/head.ejs %>
+
+    <!-- Custom styles for this template -->
+    <link href="/resources/css/justified-nav.css" rel="stylesheet">
+	<link href ="/resources/css/glyphicons-social.css" rel="stylesheet">
+   
+     <style>
+		body 		{ padding-top:40px; }
+	</style>
+</head>
+<body>     
+    <div class="container">
+         <div class="panel panel-default">
+            <div class="panel-body">
+                <div>
+                    <span class="social social-e-mail-envelope x2 col-sm-2"></span>
+                    <h3 class="col-sm-3">Email</h3>
+                    <h3 class="col-sm-7">admin@notarealemail.net</h3> 
+                </div>
+                <br>
+                <a href="https://twitter.com/AsuSeatGrabber" target="_blank">
+                    <div>
+                        <span class="social social-twitter x2 col-sm-2"></span>
+                        <h3 class="col-sm-3">Twitter</h3>
+                        <h3 class="col-sm-7">@someTwitterhandleWeMayWant</h3>
+                    </div>
+                </a>
+                <div>
+                    <span class="social social-facebook x2 col-sm-2"></span>
+                    <h3 class="col-sm-3">Facebook</h3>
+                    <h3 class="col-sm-7">contact us</h3>
+                </div>
+            </div>
+         </div>
+        
+        <form class="form-horizontal" role="form" method="post" action="#">
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="First & Last Name" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="example@domain.com" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="col-sm-2 control-label">Message</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="4" name="message"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="human" class="col-sm-2 control-label">2 + 3 = ?</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="human" name="human" placeholder="Your Answer">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <input id="submit" name="submit" type="submit" value="Send" class="btn btn-default pull-right">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <! Will be used to display an alert to the user>
+                        </div>
+                    </div>
+                </form>
+    </div>
+
+    <% include includes/bootstrapCoreInclude.ejs %>
+</body>
+</html>
