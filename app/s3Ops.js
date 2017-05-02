@@ -7,7 +7,6 @@ const secretAccessKey = '';
 const maxFileSizeInBytes = 500000000; //this is 500mb
 
 function signRequest(msg, callback) {
-    //const s3 = new aws.S3({accessKeyId: '5EF2F4A9CF91DB61E7017215C177D864', secretAccessKey: 'd73a91081dda7ad508839b32b5cb70e42449e32e', endpoint: 'http://rest.s3for.me'})
     const s3 = new aws.S3({accessKeyId: accessKeyId, secretAccessKey: secretAccessKey})
     const username = msg.username;
     const apiKey = msg.apiKey;
